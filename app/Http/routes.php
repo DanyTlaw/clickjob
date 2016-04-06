@@ -22,4 +22,5 @@ Route::group(['middleware' => 'web'], function () {
 	});
 	// All routes for Profile CRUD
 	Route::resource('profile','ProfileController');
+	Route::resource('jobExperience','JobExperienceController');
 });

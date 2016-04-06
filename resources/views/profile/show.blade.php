@@ -81,6 +81,46 @@
 							</div>	
 						</div>
 					</div>
+					<div class="col-md-8">
+						<div class="panel panel-default">
+							<div class="panel-heading">Berufserfahrungen</div>
+							<div class="panel-body">
+								<!-- Here comes the index as a partials -->
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="panel panel-default">
+							<div class="panel-heading">Ausbildungen</div>
+							<div class="panel-body">
+								<!-- Here comes the index as a partials -->
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="panel panel-default">
+							<div class="panel-heading">Sprachkenntnisse</div>
+							<div class="panel-body">
+								<!-- Here comes the index as a partials -->
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="panel panel-default">
+							<div class="panel-heading">Kompetenzen</div>
+							<div class="panel-body">
+								<!-- Here comes the index as a partials -->
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="panel panel-default">
+							<div class="panel-heading">Andere Profile</div>
+							<div class="panel-body">
+								<!-- Here comes the index as a partials -->
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
