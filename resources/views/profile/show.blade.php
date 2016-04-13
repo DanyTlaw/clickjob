@@ -55,7 +55,7 @@
 									<td>{{ $profile->tel}}</td>
 								</tr>
 								<tr>
-									<td><a href="{{ url('profile/' . $profile->id .' /edit')}}"> <button class="btn btn-primary">Bearbeiten</button></a></td>
+									<td><a href="{{ url('profile/' . $profile->id .' /edit')}}"> <button class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Bearbeiten</button></a></td>
 								</tr>																							
 								</table>
 							</div>
@@ -86,6 +86,15 @@
 							<div class="panel-heading">Berufserfahrungen</div>
 							<div class="panel-body">
 								<!-- Here comes the index as a partials -->
+								@if ($hasJobExperiences)
+									<p>Hier sehen Sie alle Ihre Berufserfahrungen:</p>
+									<a class="btn btn-small btn-primary" href="{{ url('jobExperience') }}"><span class="glyphicon glyphicon-th-list"></span> Berufserfahrungen anzeigen</a>
+									<p>Bitte fügen Sie eine Berufserfahrung hinzu:</p>
+									<a class="btn btn-small btn-success" href="{{ url('jobExperience/create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Berufserfahrung hinzufügen</a>
+								@else
+									<p>Bitte fügen Sie eine Berufserfahrung hinzu:</p>
+									<a class="btn btn-small btn-success" href="{{ url('jobExperience/create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Berufserfahrung hinzufügen</a>
+								@endif
 							</div>
 						</div>
 					</div>

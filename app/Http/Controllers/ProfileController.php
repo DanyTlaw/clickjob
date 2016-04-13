@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User as User;
+use App\JobExperience as jobExperiences;
 use Auth;
 
 
@@ -29,8 +30,16 @@ class ProfileController extends Controller
         $user = User::with('profile')->find(Auth::user()->id);
         // Saves the profile from the current user in variable 
         $profile = $user->profile;
+        // If the Profile has any added jobExperiences then we gonna return the amount
+        $numberJobExperiences = jobExperiences::where('profile_id', $profile->id)->count();
+        // If there are more then 0 then there is a jobExerience -> true
+        if($numberJobExperiences>0){
+            $hasJobExperiences = true;
+        }else{
+            $hasJobExperiences = false;
+        }
         // Returns the view and gives two different variables for the view ($profile), ($user)
-        return view('profile.show')->with('profile', $profile)->with('user',$user);
+        return view('profile.show')->with('profile', $profile)->with('user',$user)->with('hasJobExperiences' ,$hasJobExperiences);
     }
 
     public function create(){

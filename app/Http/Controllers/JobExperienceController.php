@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Session;
+use Redirect;
+use App\User;
+use App\Profile;
+use App\JobExperience;
+use Auth;
 
 class JobExperienceController extends Controller
 {
@@ -15,7 +21,15 @@ class JobExperienceController extends Controller
      */
     public function index()
     {
-        return view('jobExperience.index');
+        // With Auth::user find the current user
+        $user = User::with('profile')->find(Auth::user()->id);
+        // Saves the profile from the current user in variable 
+        $profile = $user->profile;
+        $id = $profile->id;
+
+        $jobExperiences = JobExperience::where('profile_id', $id)->get();
+
+        return view('jobExperience.index')->with('jobExperiences', $jobExperiences);
     }
 
     /**
@@ -25,7 +39,13 @@ class JobExperienceController extends Controller
      */
     public function create()
     {
-        //
+        // With Auth::user find the current user
+        $user = User::with('profile')->find(Auth::user()->id);
+        // Saves the profile from the current user in variable 
+        $profile = $user->profile;
+        // Returns the view and gives two different variables for the view ($profile), ($user)
+        return view('jobExperience.create')->with('profile', $profile)->with('user', $user);
+
     }
 
     /**
@@ -36,7 +56,23 @@ class JobExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // With Auth::user find the current user
+        $user = User::with('profile')->find(Auth::user()->id);
+        // Saves the profile from the current user in variable 
+        $profile = $user->profile;
+        // Get all the Input from the edit form
+        $input = $request->all();
+        // Saves the new input
+        $jobExperience = new JobExperience;
+
+        $jobExperience->profile_id = $profile->id;
+
+        $jobExperience->fill($input)->save();
+        // Shows a message for the user
+       
+       $jobExperiences = JobExperience::where('profile_id', $profile->id)->get();
+        // Redirecton to user informations
+        return view('jobExperience.index')->with('jobExperiences', $jobExperiences);
     }
 
     /**
@@ -47,7 +83,11 @@ class JobExperienceController extends Controller
      */
     public function show($id)
     {
-        
+
+        $jobExperience = JobExperience::find($id);
+
+        return view('JobExperience.show')->with('jobExperience', $jobExperience);
+
     }
 
     /**
@@ -81,6 +121,12 @@ class JobExperienceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // delete
+        $jobExperience = JobExperience::find($id);
+        $jobExperience->delete();
+
+        // redirect
+        Session::flash('message', 'Berufserfahrung erfolgreich gelöscht.');
+        return Redirect::to('jobExperience');
     }
 }
