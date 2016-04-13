@@ -98,7 +98,9 @@ class JobExperienceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jobExperience = JobExperience::find($id);
+
+        return view('JobExperience.edit')->with('jobExperience', $jobExperience);
     }
 
     /**
@@ -110,7 +112,16 @@ class JobExperienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jobExperience = jobExperiences::where('id' , $id)->get();
+        // Get all the Input from the edit form
+        $input = $request->all();
+
+        $jobExperience->fill($input)->save();
+        // Shows a message for the user
+       
+        $jobExperiences = JobExperience::where('profile_id', $profile->id)->get();
+        // Redirecton to user informations
+        return view('jobExperience.index')->with('jobExperiences', $jobExperiences);
     }
 
     /**
