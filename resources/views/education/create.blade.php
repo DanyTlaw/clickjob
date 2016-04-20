@@ -8,7 +8,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">Ausbildung erfassen</div>
                     <div class="panel-body">
-                        <!-- Start der Form zum erfassen einer Berufserfahrung -->
+                        <!-- Start der Form zum erfassen einer Ausbildung -->
                         {!! Form::open(array('action' => 'EducationController@store'),array('method' => 'post'), array('class' => 'form-inline')) !!}
 
                         <div class="form-group">
