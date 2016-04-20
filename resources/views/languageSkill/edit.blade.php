@@ -8,7 +8,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">Sprachkentnisse erfassen</div>
                     <div class="panel-body">
-                        <!-- Start der Form zum erfassen einer Berufserfahrung -->
+                        <!-- Start der Form zum erfassen einer Sprache -->
                         {!! Form::model($languageSkill, ['method' => 'PATCH', 'route' => ['languageSkill.update', $languageSkill->id] ],array('class' => 'form-inline')) !!}
 
 

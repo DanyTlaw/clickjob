@@ -137,6 +137,15 @@
 							<div class="panel-heading">Kompetenzen</div>
 							<div class="panel-body">
 								<!-- Here comes the index as a partials -->
+								@if ($hasCompetences)
+									<p>Hier sehen Sie alle Ihre Kompetenzen:</p>
+									<a class="btn btn-small btn-primary" href="{{ url('competence') }}"><span class="glyphicon glyphicon-th-list"></span> Kompetenzen anzeigen</a>
+									<p>Bitte fügen Sie eine Kompetenz hinzu:</p>
+									<a class="btn btn-small btn-success" href="{{ url('competence/create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Kompetenz hinzufügen</a>
+								@else
+									<p>Bitte fügen Sie eine Kompetenz hinzu:</p>
+									<a class="btn btn-small btn-success" href="{{ url('competence/create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Kompetenz hinzufügen</a>
+								@endif
 							</div>
 						</div>
 					</div>

@@ -28,19 +28,17 @@
                                 <td>{{ $value->title }}</td>
                                 <td>{{ $value->degree }}</td>
                                 <td>{{ $value->school }}</td>
-                                <!-- we will also add show, edit, and delete buttons -->
+
                                 <td>
 
-                                    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                                    <!-- we will add this later since its a little more complicated than the other two buttons -->
                                     {{ Form::open(array('url' => 'education/' . $value->id, 'class' => 'pull-right')) }}
                                     {{ Form::hidden('_method', 'DELETE') }}
                                     {{ Form::submit('Berufserfahrung löschen', array('class' => 'btn btn-danger')) }}
                                     {{ Form::close() }}
-                                            <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
+
                                     <a class="btn btn-small btn-success" href="{{ URL::to('education/' . $value->id) }}">Anzeigen</a>
 
-                                    <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
+
                                     <a class="btn btn-small btn-info" href="{{ URL::to('education/' . $value->id . '/edit') }}">Bearbeiten</a>
 
                                 </td>
@@ -48,7 +46,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
+
                     <a class="btn btn-small btn-primary" href="{{ URL::to('education/create') }}">Ausbildung hinzufügen</a>
                 </div>
             </div>

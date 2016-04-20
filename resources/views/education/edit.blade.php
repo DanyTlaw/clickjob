@@ -8,7 +8,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">Ausbildung bearbeiten</div>
                     <div class="panel-body">
-                        <!-- Start der Form zum erfassen einer Berufserfahrung -->
+                        <!-- Start der Form zum erfassen einer Ausbildung -->
                         {!! Form::model($education, ['method' => 'PATCH', 'route' => ['education.update', $education->id] ],array('class' => 'form-inline')) !!}
 
                         <div class="form-group">

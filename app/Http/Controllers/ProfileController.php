@@ -9,6 +9,7 @@ use App\User as User;
 use App\JobExperience as jobExperiences;
 use App\Education as Education;
 use App\LanguageSkill as LanguageSkill;
+use App\Competence as Competence;
 use Auth;
 
 
@@ -49,7 +50,7 @@ class ProfileController extends Controller
             $hasEducations = false;
         }
 
-        // If the Profile has any eduactions then the amount will be returned
+        // If the Profile has any languageSkills then the amount will be returned
         $numberLanguageSkills = LanguageSkill::where('profile_id', $profile->id)->count();
         if($numberLanguageSkills>0){
             $hasLanguageSkills = true;
@@ -57,8 +58,16 @@ class ProfileController extends Controller
             $hasLanguageSkills = false;
         }
 
+        // If the Profile has any Competences then the amount will be returned
+        $numberCompetences = Competence::where('profile_id', $profile->id)->count();
+        if($numberCompetences>0){
+            $hasCompetences = true;
+        }else{
+            $hasCompetences = false;
+        }
+
         // Returns the view and gives two different variables for the view ($profile), ($user)
-        return view('profile.show')->with('profile', $profile)->with('user',$user)->with('hasJobExperiences' ,$hasJobExperiences)->with('hasEducations',$hasEducations)->with('hasLanguageSkills', $hasLanguageSkills);
+        return view('profile.show')->with('profile', $profile)->with('user',$user)->with('hasJobExperiences' ,$hasJobExperiences)->with('hasEducations',$hasEducations)->with('hasLanguageSkills', $hasLanguageSkills)->with('hasCompetences', $hasCompetences);
     }
 
     public function create(){
