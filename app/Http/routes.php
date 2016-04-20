@@ -24,4 +24,5 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('profile','ProfileController');
 	Route::resource('jobExperience','JobExperienceController');
 	Route::resource('education', 'EducationController');
+    Route::resource('languageSkill', 'LanguageSkillController');
 });
