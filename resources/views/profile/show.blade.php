@@ -120,6 +120,15 @@
 							<div class="panel-heading">Sprachkenntnisse</div>
 							<div class="panel-body">
 								<!-- Here comes the index as a partials -->
+								@if ($hasLanguageSkills)
+									<p>Hier sehen Sie alle Ihre Sprachkenntnisse:</p>
+									<a class="btn btn-small btn-primary" href="{{ url('languageSkill') }}"><span class="glyphicon glyphicon-th-list"></span> Sprachkenntnisse anzeigen</a>
+									<p>Bitte fügen Sie eine Sprachkenntniss hinzu:</p>
+									<a class="btn btn-small btn-success" href="{{ url('languageSkill/create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Sprachkenntnisse hinzufügen</a>
+								@else
+									<p>Bitte fügen Sie eine Sprachkenntniss hinzu:</p>
+									<a class="btn btn-small btn-success" href="{{ url('languageSkill/create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Sprachkenntnisse hinzufügen</a>
+								@endif
 							</div>
 						</div>
 					</div>
