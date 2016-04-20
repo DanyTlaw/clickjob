@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User as User;
 use App\JobExperience as jobExperiences;
+use App\Education as Education;
 use Auth;
 
 
@@ -38,8 +39,16 @@ class ProfileController extends Controller
         }else{
             $hasJobExperiences = false;
         }
+
+        // If the Profile has any eduactions then the amount will be returned
+        $numberEducations = Education::where('profile_id', $profile->id)->count();
+        if($numberEducations>0){
+            $hasEducations = true;
+        }else{
+            $hasEducations = false;
+        }
         // Returns the view and gives two different variables for the view ($profile), ($user)
-        return view('profile.show')->with('profile', $profile)->with('user',$user)->with('hasJobExperiences' ,$hasJobExperiences);
+        return view('profile.show')->with('profile', $profile)->with('user',$user)->with('hasJobExperiences' ,$hasJobExperiences)->with('hasEducations',$hasEducations);
     }
 
     public function create(){

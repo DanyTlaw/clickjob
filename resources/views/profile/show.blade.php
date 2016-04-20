@@ -103,6 +103,15 @@
 							<div class="panel-heading">Ausbildungen</div>
 							<div class="panel-body">
 								<!-- Here comes the index as a partials -->
+								@if ($hasEducations)
+									<p>Hier sehen Sie alle Ihre Ausbildungen:</p>
+									<a class="btn btn-small btn-primary" href="{{ url('education') }}"><span class="glyphicon glyphicon-th-list"></span> Ausbildungen anzeigen</a>
+									<p>Bitte fügen Sie eine Ausbildung hinzu:</p>
+									<a class="btn btn-small btn-success" href="{{ url('education/create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ausbildungen hinzufügen</a>
+								@else
+									<p>Bitte fügen Sie eine Ausbildung hinzu:</p>
+									<a class="btn btn-small btn-success" href="{{ url('education/create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ausbildungen hinzufügen</a>
+								@endif
 							</div>
 						</div>
 					</div>

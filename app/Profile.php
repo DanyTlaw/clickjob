@@ -15,7 +15,12 @@ class Profile extends Model
     public function jobExperiences(){
     	return $this->hasMany('App\JobExperience');
     }
-    
+
+    //Relationship -> Profil has many Education
+    public function education(){
+        return $this->hasMany('App\Education');
+    }
+
     // Makes data fillable for massasignment
     protected $fillable = [
     	'profle_picture_url', 'title', 'first_name', 'last_name', 'place', 'street', 'zip', 'birthyear', 'nationality', 'tel'
