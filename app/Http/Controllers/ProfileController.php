@@ -10,6 +10,8 @@ use App\JobExperience as jobExperiences;
 use App\Education as Education;
 use App\LanguageSkill as LanguageSkill;
 use App\Competence as Competence;
+use App\UploadedFile;
+use Storage;
 use Auth;
 
 
@@ -66,8 +68,24 @@ class ProfileController extends Controller
             $hasCompetences = false;
         }
 
+        // Loads all stored files
+        // $email = Auth::user()->email;
+        //$directory = config('app.fileDestinationPath').'/'.$email;
+
+        //$files = Storage::files($directory);
+
+        $files = UploadedFile::where('profile_id', $profile->id)->where('type', 'data')->get();
+
+        $profile_picture = UploadedFile::where('profile_id', $profile->id)->where('type','profile_picture')->get();
+        // Is needed for download will be used later
+        /*$paths = array();
+        foreach ($files as $file) {
+            $url = action('FileController@download', ['filename' => $file]);
+            array_push($paths, $url);
+        }*/
+
         // Returns the view and gives two different variables for the view ($profile), ($user)
-        return view('profile.show')->with('profile', $profile)->with('user',$user)->with('hasJobExperiences' ,$hasJobExperiences)->with('hasEducations',$hasEducations)->with('hasLanguageSkills', $hasLanguageSkills)->with('hasCompetences', $hasCompetences);
+        return view('profile.show')->with('profile', $profile)->with('user',$user)->with('hasJobExperiences' ,$hasJobExperiences)->with('hasEducations',$hasEducations)->with('hasLanguageSkills', $hasLanguageSkills)->with('hasCompetences', $hasCompetences)->with('files', $files)->with('profile_picture',$profile_picture);
     }
 
     public function create(){
@@ -104,5 +122,9 @@ class ProfileController extends Controller
 
     public function destroy($id){
 
+    }
+
+    public function upload(){
+        dd($request);
     }
 }

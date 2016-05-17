@@ -1,12 +1,12 @@
-@extends('layouts.app')
 
-@section('content')
-
-    <div class="container">
-        <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Sprachkentnisse erfassen</div>
+                    <div class="panel-heading"vrole="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span class="glyphicon glyphicon-plus"></span> Sprachkentnisse erfassen </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
                         <!-- Start der Form zum erfassen einer Berufserfahrung -->
                         {!! Form::open(array('action' => 'LanguageSkillController@store'),array('method' => 'post'), array('class' => 'form-inline')) !!}
@@ -30,6 +30,3 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-@endsection
