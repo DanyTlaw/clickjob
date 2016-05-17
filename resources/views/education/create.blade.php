@@ -1,12 +1,12 @@
-@extends('layouts.app')
 
-@section('content')
-
-    <div class="container">
-        <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Ausbildung erfassen</div>
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-    expanded="false" aria-controls="collapseTwo"><span class="glyphicon glyphicon-plus"></span> Ausbildung erfassen </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
                         <!-- Start der Form zum erfassen einer Ausbildung -->
                         {!! Form::open(array('action' => 'EducationController@store'),array('method' => 'post'), array('class' => 'form-inline')) !!}
@@ -61,5 +61,3 @@
                 </div>
             </div>
         </div>
-    </div>
-@endsection

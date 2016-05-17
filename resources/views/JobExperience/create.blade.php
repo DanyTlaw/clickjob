@@ -1,12 +1,12 @@
-@extends('layouts.app')
 
-@section('content')
-
-<div class="container">
-	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-				<div class="panel-heading">Berufserfahrung erfassen</div>
+				<div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-    expanded="false" aria-controls="collapseOne"><span class="glyphicon glyphicon-plus"></span> Berufserfahrung erfassen</div>
+						</a>
+					</h4>
+				<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 				<div class="panel-body">
 					<!-- Start der Form zum erfassen einer Berufserfahrung -->
 					{!! Form::open(array('action' => 'JobExperienceController@store'),array('method' => 'post'), array('class' => 'form-inline')) !!}
@@ -97,6 +97,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 
-@endsection

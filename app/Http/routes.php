@@ -26,4 +26,8 @@ Route::group(['middleware' => 'web'], function () {
 	Route::resource('education', 'EducationController');
     Route::resource('languageSkill', 'LanguageSkillController');
     Route::resource('competence', 'CompetenceController');
+
+    Route::post('/handleUpload', 'FileController@handleUpload');
+   	//  Route::get('/download/{filename}', 'FileController@download');
+   	Route::get('/deleteFile/{id}', ['as' => 'deleteFile' ,'uses' => 'FileController@deleteFile']);
 });
