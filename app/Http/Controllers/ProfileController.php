@@ -101,6 +101,8 @@ class ProfileController extends Controller
         $user = User::with('profile')->find(Auth::user()->id);
         // Saves the profile from the current user in variable 
         $profile = $user->profile;
+
+        
         // Returns the view and gives two different variables for the view ($profile), ($user)
         return view('profile.edit')->with('profile', $profile)->with('user', $user);
     }
@@ -114,13 +116,46 @@ class ProfileController extends Controller
         $input = $request->all();
         // Saves the new input
         $profile->fill($input)->save();
-        // Shows a message for the user
+          
 	   
 	    // Redirecton to user informations
-	    return view('profile.show')->with('profile', $profile)->with('user', $user);
+        return redirect()->route('profile.show', [$id]);
     }
 
     public function destroy($id){
+
+    }
+
+    // This Method is used to show all data to the user, so he gets an overview what he already wrote
+    public function lebenslauf($id){
+        // With Auth::user find the current user
+        $user = User::with('profile')->find(Auth::user()->id);
+
+        /*  
+         * All the data that is already done will be needed for the view
+         */
+
+        // Profile
+        $profile = $user->profile;
+
+        // Jobexperieces
+        $jobExperiences = jobExperiences::where('profile_id', $profile->id)->get();
+
+        // Educations
+        $educations = Education::where('profile_id', $profile->id)->get();
+
+        // LanguageSkills
+        $languageSkills = LanguageSkill::where('profile_id', $profile->id)->get();
+
+        // Competences
+        $competences = Competence::where('profile_id', $profile->id)->get();
+
+        // Profile picture
+        $profile_picture = UploadedFile::where('profile_id', $profile->id)->where('type','profile_picture')->get();
+
+
+
+        return view('profile/lebenslauf')->with('user', $user)->with('profile', $profile)->with('jobExperiences', $jobExperiences)->with('educations', $educations)->with('languageSkills', $languageSkills)->with('competences', $competences)->with('profile_picture', $profile_picture);
 
     }
 

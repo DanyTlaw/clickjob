@@ -22,6 +22,9 @@ Route::group(['middleware' => 'web'], function () {
 	});
 	// All routes for Profile CRUD
 	Route::resource('profile','ProfileController');
+
+  Route::get('/profile/{id}/lebenslauf','ProfileController@lebenslauf');
+
 	Route::resource('jobExperience','JobExperienceController');
 	Route::resource('education', 'EducationController');
     Route::resource('languageSkill', 'LanguageSkillController');
