@@ -60,9 +60,11 @@
 									<div class="panel panel-default">
 										<div class="panel-body">
 											<h3>Profilbild</h3>
+											@if($profile_picture)
 											@foreach($profile_picture as $picture)
 												<img src="{{ URL::to('/') }}/uploads/{{ $user->id}}/{{ $picture->filename }}" style="width:100%;height:300px;">
 											@endforeach
+											@endif
 											<br></br>
 											{!! Form::open(array('action' => 'FileController@handleUpload', 'files' => true)) !!}
 												{!! Form::file('file') !!}
