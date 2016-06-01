@@ -26,4 +26,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    /**
+     *Shows the Conditions for the companies
+     *
+     */
+    public function conditions()
+    {
+        return view('conditions');
+    }
 }
