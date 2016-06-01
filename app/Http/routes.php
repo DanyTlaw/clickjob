@@ -11,11 +11,14 @@
 |
 */
 
+    Route::get('/home', 'HomeController@index');
+
+    Route::get('/conditions', function() {
+      return view('conditions');
+    });
 Route::group(['middleware' => 'web'], function () {
 	// Generates all routes for Authentication
     Route::auth();
-
-    Route::get('/home', 'HomeController@index');
 
     Route::get('/', function () {
     	return view('welcome');
