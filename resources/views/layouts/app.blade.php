@@ -41,7 +41,7 @@
 
                 <!-- Branding Image --> 
                 <a class="navbar-brand" href="{{ url('/') }}" style="font-size: 30px;">
-                    Joblive
+                    Jobslive
                 </a>
             </div>
 
@@ -69,6 +69,7 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/profile/' . Auth::user()->profile->id )}}">Profil</a></li>
+                                <li><a href="{{ url('/profile/' . Auth::user()->profile->id . '/lebenslauf')}}">Profil anschauen</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Ausloggen</a></li>
                             </ul>
                         </li>
