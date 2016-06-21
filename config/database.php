@@ -55,8 +55,9 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
-            'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
-            'port' => env('DB_PORT', '8889'),
+            //'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
+            'unix_socket' => '/run/mysqld/mysqld.sock',
+            'port' => env('DB_PORT', '3306'),
             'database' => 'joblive_development',
             'username' => 'root',
             'password' => 'root',
